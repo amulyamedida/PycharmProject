@@ -5,6 +5,7 @@ from pyspark.sql.functions import dense_rank
 spark = SparkSession.builder.appName("test").master("local").getOrCreate()
 data=r"E:\BigData\drivers\us-500.csv"
 df=spark.read.format("csv").option("inferSchema","true").option("mode","DROPMALFORMED").option("header","true").option("sep",",").load(data)
+
 df=df.withColumnRenamed("zip","salary") #to rename column name
 #res=df.orderBy(col("salary").asc())
 win=Window.partitionBy("state").orderBy(col("salary").asc())

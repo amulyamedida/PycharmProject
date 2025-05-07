@@ -46,5 +46,4 @@ df=df.withColumn(
         END
     """)
 )
-
 df.show(truncate=False)
